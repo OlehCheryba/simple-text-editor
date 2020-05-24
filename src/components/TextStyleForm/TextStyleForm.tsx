@@ -7,9 +7,9 @@ const TextStyleForm: FC = () => {
   const dispatch = useDispatch();
 
   return (
-    <>
+    <form id="TextStyleForm">
       <select value="heading" onChange={(e) => dispatch(selectFontSize(e.target.value))}>
-        <option value="heading">- font size -</option>
+        <option value="heading">Select font size</option>
         <option value="1">Extra small</option>
         <option value="2">Small</option>
         <option value="3">Medium</option>
@@ -19,25 +19,20 @@ const TextStyleForm: FC = () => {
         <option value="7">Huge</option>
       </select>
       <select value="heading" onChange={(e) => dispatch(selectColor(e.target.value))}>
-        <option value="heading">- text color -</option>
+        <option value="heading">Select text color</option>
         <option value="red">Red</option>
         <option value="blue">Blue</option>
         <option value="green">Green</option>
         <option value="black">Black</option>
       </select>
       <select value="heading" onChange={(e) => dispatch(selectBackgroundColor(e.target.value))}>
-        <option value="heading">- background color -</option>
+        <option value="heading">Select background color</option>
         <option value="red">Red</option>
         <option value="blue">Blue</option>
         <option value="green">Green</option>
         <option value="black">Black</option>
       </select>
-      <select
-        onClick={() => dispatch(selectColor('hi'))}
-      >
-        <option value="das">dsadas</option>
-      </select>
-    </>
+    </form>
   );
 };
 

@@ -34,13 +34,19 @@ const TextEditor: FC = () => {
   }, [fontSize, color, backgroundColor]);
 
   return (
-    <div>
+    <div id="TextEditor">
+      <h1>
+        Text editor (Test task for Redentu)
+      </h1>
       <TextStyleForm />
       <div 
         ref={ContentEditableDiv} 
         id="textBox" 
-        contentEditable="true" 
-      />
+        contentEditable
+        suppressContentEditableWarning
+      >
+        You can input text here :)
+      </div>
     </div>
   );
 };
