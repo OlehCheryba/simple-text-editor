@@ -24,6 +24,9 @@ const TextStyleForm: FC = () => {
         <option value="blue">Blue</option>
         <option value="green">Green</option>
         <option value="black">Black</option>
+        <option value="white">White</option>
+        <option value="orange">Orange</option>
+        <option value="grey">Grey</option>
       </select>
       <select value="heading" onChange={(e) => dispatch(selectBackgroundColor(e.target.value))}>
         <option value="heading">Select background color</option>
@@ -31,6 +34,9 @@ const TextStyleForm: FC = () => {
         <option value="blue">Blue</option>
         <option value="green">Green</option>
         <option value="black">Black</option>
+        <option value="white">White</option>
+        <option value="orange">Orange</option>
+        <option value="grey">Grey</option>
       </select>
     </form>
   );

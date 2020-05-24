@@ -6,19 +6,11 @@ import { Reducer } from "redux";
 const textEditorReducer: Reducer<TextEditorState, TextEditorActions> = (state = textEditorInitialState, action) => {
   switch (action.type) {
     case SELECT_FONT_SIZE:
-      return {
-        ...state,
-        fontSize: action.payload.fontSize
-      };
     case SELECT_COLOR:
-      return {
-        ...state,
-        color: action.payload.color
-      };
     case SELECT_BACKGROUND_COLOR:
       return {
         ...state,
-        backgroundColor: action.payload.backgroundColor
+        ...action.payload
       };
     default:
       return state;
