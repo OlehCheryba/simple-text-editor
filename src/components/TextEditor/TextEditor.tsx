@@ -1,12 +1,14 @@
 import React, { FC, useEffect, useRef } from "react";
 import './TextEditor.sass';
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import TextStyleForm from '../TextStyleForm/TextStyleForm';
 import { fontSizeSelector, colorSelector, backgroundColorSelector } from '../../store/text-editor/text.editor.selectors';
+import { selectFontSize, selectColor, selectBackgroundColor } from "../../store/text-editor/text.editor.actions";
 
 const TextEditor: FC = () => {
   const ContentEditableDiv = useRef(null);
 
+  const dispatch = useDispatch();
   const fontSize = useSelector(fontSizeSelector);
   const color = useSelector(colorSelector);
   const backgroundColor = useSelector(backgroundColorSelector);
@@ -38,7 +40,11 @@ const TextEditor: FC = () => {
       <h1>
         Text editor (Test task for Redentu)
       </h1>
-      <TextStyleForm />
+      <TextStyleForm 
+        onFontSizeChange={fontSize => dispatch(selectFontSize(fontSize))}
+        onColorChange={color => dispatch(selectColor(color))}
+        onBackgroundColorChange={backgroundColor => dispatch(selectBackgroundColor(backgroundColor))}
+      />
       <div 
         ref={ContentEditableDiv} 
         id="textBox" 
