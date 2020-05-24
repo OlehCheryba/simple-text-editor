@@ -1,14 +1,11 @@
-import React, { FC, useEffect } from "react";
+import React, { FC, useEffect, useRef } from "react";
 import './TextEditor.sass';
-import { useSelector, useDispatch } from "react-redux";
-import { selectFontSize, selectColor, selectBackgroundColor } from "../../store/text-editor/text.editor.actions";
+import { useSelector } from "react-redux";
+import TextStyleForm from '../TextStyleForm/TextStyleForm';
 import { fontSizeSelector, colorSelector, backgroundColorSelector } from '../../store/text-editor/text.editor.selectors';
 
-interface TextEditorProps {
-}
-
-const TextEditor: FC<TextEditorProps> = () => {
-  const dispatch = useDispatch();
+const TextEditor: FC = () => {
+  const ContentEditableDiv = useRef(null);
 
   const fontSize = useSelector(fontSizeSelector);
   const color = useSelector(colorSelector);
@@ -33,18 +30,17 @@ const TextEditor: FC<TextEditorProps> = () => {
   }, [backgroundColor]);
 
   useEffect(() => {
-    document.getElementById("textBox")?.focus();
+    ContentEditableDiv.current?.focus();
   }, [fontSize, color, backgroundColor]);
 
   return (
     <div>
-      <div contentEditable="true">
-        <span style={{ backgroundColor: 'rgb(248, 187, 208)' }}>Hi</span>
-        <br/>
-        <span style={{ backgroundColor: 'rgb(248, 187, 208)' }}>My lovely</span>
-        <span style={{ color: 'rgb(136, 14, 79)', fontSize: 54 }}>little</span>
-        <span style={{ color: 'rgb(186, 104, 200)', backgroundColor: 'rgb(248, 187, 0)' }}>Ponny</span>
-      </div>
+      <TextStyleForm />
+      <div 
+        ref={ContentEditableDiv} 
+        id="textBox" 
+        contentEditable="true" 
+      />
     </div>
   );
 };
